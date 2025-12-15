@@ -3,6 +3,7 @@ package com.talentotech.crud.models.entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.talentotech.crud.models.entities.enums.EstadoPedido;
 
 import jakarta.persistence.CascadeType;
@@ -30,7 +31,7 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long idPedido;
-    private LocalDate fechaCreacion = LocalDate.now();
+    private LocalDate fechaCreacion;
 
     @Enumerated(EnumType.STRING)
     private EstadoPedido estado;
@@ -40,6 +41,7 @@ public class Pedido {
     @JoinColumn(name="idCliente")
     private Cliente cliente;
 
-    @OneToMany(mappedBy="pedido", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<DetallePedido> detalles;
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.talentotech.crud.models.dto.PedidoRequest;
 import com.talentotech.crud.models.entities.Pedido;
 import com.talentotech.crud.services.interfaces.PedidoService;
 
@@ -40,9 +41,12 @@ public class PedidoController {
     }
 
     @PostMapping
-    public Pedido crearPedido(@RequestBody Pedido pedido) {
-        return ps.guardarPedido(pedido);
-    }
+    public Pedido crearPedido(@RequestBody PedidoRequest pedidoRequest) {
+    return ps.guardarPedido(
+        pedidoRequest.getIdCliente(),
+        pedidoRequest.getItems()
+    );
+}
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarPedido(@PathVariable Long id) {

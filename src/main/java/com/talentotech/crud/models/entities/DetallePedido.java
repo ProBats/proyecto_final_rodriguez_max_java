@@ -1,5 +1,8 @@
 package com.talentotech.crud.models.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -20,8 +23,9 @@ public class DetallePedido {
     private DetallePedidoId id;
 
     @ManyToOne
-    @MapsId("idPedido") //indica que la FK forma parte de la clave primaria compuesta, y ahorra tener campos duplicados.
-    @JoinColumn(name="idPedido")
+    @MapsId("idPedido")
+    @JoinColumn(name = "id_pedido")
+    @JsonIgnore
     private Pedido pedido;
 
     @ManyToOne

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD de Artículos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="container mt-4">
+
+    <h2>Crear Pedido</h2>
+
+    <!-- Cliente -->
+    <div class="mb-3">
+        <label>Cliente</label>
+        <select id="clienteSelect" class="form-select"></select>
+    </div>
+
+    <!-- Producto -->
+    <div class="row">
+        <div class="col-md-5">
+            <label>Producto</label>
+            <select id="productoSelect" class="form-select"></select>
+        </div>
+
+        <div class="col-md-3">
+            <label>Cantidad</label>
+            <input type="number" id="cantidad" class="form-control" value="1">
+        </div>
+
+        <div class="col-md-4 d-flex align-items-end">
+            <button class="btn btn-primary w-100" onclick="agregarAlCarrito()">Agregar</button>
+        </div>
+    </div>
+
+    <!-- Tabla carrito -->
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tablaCarrito"></tbody>
+    </table>
+
+    <h4>Total: $<span id="total">0</span></h4>
+
+    <button class="btn btn-success mt-3" onclick="confirmarPedido()">Confirmar Pedido</button>
+
+    <script src="pedidos.js"></script>
+</body>
+</html>
